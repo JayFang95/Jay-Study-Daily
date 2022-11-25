@@ -1,0 +1,25 @@
+server:
+  port: 10010
+
+spring:
+  application:
+    name: eureka-consumer-demo
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka01:10001/eureka
+
+  instance:
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    # hostname需要和defaultZone保持一致
+    hostname: eureka01
+
+# 默认没有开启熔断降级，fallback设置不生效
+feign:
+  hystrix:
+    enabled: true
+

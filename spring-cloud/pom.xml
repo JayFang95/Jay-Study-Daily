@@ -10,6 +10,7 @@
     <version>1.0</version>
     <modules>
         <module>eureka-server-demo</module>
+        <module>eureka-consumer-demo</module>
     </modules>
 
     <parent>
