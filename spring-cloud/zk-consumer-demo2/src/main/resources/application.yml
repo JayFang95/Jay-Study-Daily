@@ -1,0 +1,12 @@
+server:
+  port: 8011
+
+spring:
+  application:
+    name: zk-demo2-service
+
+  cloud:
+    zookeeper:
+      connect-string: 192.168.25.129:2181
+      connection-timeout: 10000
+      session-timeout: 60000
