@@ -1,23 +1,15 @@
 package com.jay.service;
 
-import com.alibaba.fastjson.JSON;
-import com.jay.bean.CustomConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.framework.recipes.locks.InterProcessMultiLock;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
-import org.apache.curator.framework.recipes.locks.InterProcessReadWriteLock;
-import org.apache.curator.framework.recipes.locks.InterProcessSemaphoreMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.retry.RetryNTimes;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.Watcher;
-import org.checkerframework.checker.units.qual.C;
 
-import javax.annotation.PostConstruct;
-import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -132,7 +124,7 @@ public class CuratorDemoService {
                 服务端生成了节点，由于网络原因客户端没有得到响应，导致重复创建节点，调用的幂等性不能保证了
                 protection模式会生成随机字符，再次创建时回去校验是否时重复创建，避免多次创建
              */
-//            String forPath = CURATOR.create().withProtection().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath("/protection");
+            String forPath = CURATOR.create().withProtection().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath("/protection");
 
             byte[] bytes = CURATOR.getData().forPath("/demo2");
             byte[] bytes2 = CURATOR.getData().usingWatcher((Watcher) (curatorWatcher) -> {}).forPath("/parent/child");
