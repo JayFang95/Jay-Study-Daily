@@ -1,0 +1,25 @@
+server:
+  port: 8099
+
+spring:
+  application:
+    name: rabbitmq-springboot
+  rabbitmq:
+    host: 192.168.25.129
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: /
+    #    开启消息投递确认
+    publisher-returns: true
+    publisher-confirm-type: correlated
+#    消息重试设置
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 3
+          max-interval: 20000ms
+          initial-interval: 3000ms
+          multiplier: 2
+        default-requeue-rejected: false
