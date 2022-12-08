@@ -22,6 +22,7 @@ public class SimplerConsumer {
     @RabbitListener(queues = MqConstant.COMMON_QUEUE)
     public void simpleListener(Message message){
         log.info("接收到队列： {} 的消息： {}", MqConstant.COMMON_QUEUE, new String(message.getBody()));
+        int i = 5 / 0;
     }
 
 }

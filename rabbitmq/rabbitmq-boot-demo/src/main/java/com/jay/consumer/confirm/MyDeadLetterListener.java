@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class MyDeadLetterListener implements ChannelAwareMessageListener {
 
-
     @Override
     public void onMessage(Message message, Channel channel) throws Exception {
         long deliveryTag = message.getMessageProperties().getDeliveryTag();

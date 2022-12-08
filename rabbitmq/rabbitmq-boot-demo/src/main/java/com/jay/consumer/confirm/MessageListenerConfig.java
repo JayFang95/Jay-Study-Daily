@@ -37,7 +37,7 @@ public class MessageListenerConfig {
         // 设置监听器
         container.setMessageListener(ackListener);
         // 设置消息应答模式： 模式为 NONE自动  AUTO视异常情况  MANUAL手动
-//        container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+//        container.setAcknowledgeMode(AcknowledgeMode.AUTO);
         return container;
     }
 

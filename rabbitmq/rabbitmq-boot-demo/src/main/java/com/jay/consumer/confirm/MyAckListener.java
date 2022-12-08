@@ -34,10 +34,11 @@ public class MyAckListener implements ChannelAwareMessageListener {
             // todo 幂等性验证
             // todo 处理逻辑，成功后应答
             TimeUnit.SECONDS.sleep(1);
-//            int i = 10 /0 ;
+            int i = 10 /0 ;
             channel.basicAck(deliveryTag, false);
         }catch (Exception exception){
             // 消息消费失败处理逻辑，是重新入队还是逻辑处理
+            System.out.println(exception.getMessage());
             // todo 消息重新入队需要做幂等性验证
             if (map.containsKey(deliveryTag)){
                 Integer count = map.get(deliveryTag);
