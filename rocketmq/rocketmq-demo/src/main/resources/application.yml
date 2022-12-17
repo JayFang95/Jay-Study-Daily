@@ -1,0 +1,14 @@
+rocketmq:
+  name-server: 192.168.25.130:9876
+  producer:
+    group: test-group
+#    超时时间
+    send-message-timeout: 5000
+#    默认消息达到4096字节压缩消息
+    compress-message-body-threshold: 4096
+#    默认最大消息大小：128k
+    max-message-size: 4194304
+    retry-times-when-send-async-failed: 3
+    retry-times-when-send-failed: 3
+#    失败后是否重试其他代理（多broker时生效）
+    retry-next-server: true
