@@ -36,7 +36,7 @@ public class SocketController {
             OutputStream os = null;
             String name = Thread.currentThread().getName();
             try {
-                socket = new Socket("127.0.0.1", 8008);
+                socket = new Socket("127.0.0.1", 9000);
                 os = socket.getOutputStream();
                 int count = 0;
                 String msg = "";
